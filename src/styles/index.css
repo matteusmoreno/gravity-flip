@@ -1,0 +1,29 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-night: #0b0b1e;
+  --color-night-2: #14143a;
+  --color-cyan-neon: #19f0ff;
+  --color-magenta-neon: #ff2e9a;
+  --color-gold-neon: #ffe94d;
+  --color-shield: #4d7cff;
+  --color-ink: #eaf6ff;
+  --color-ink-dim: #8fa3c7;
+  --font-display: 'Orbitron', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+html, body, #root { height: 100%; -webkit-tap-highlight-color: transparent; -webkit-touch-callout: none; user-select: none; -webkit-user-select: none; margin: 0; background: var(--color-night); color: var(--color-ink); touch-action: none; overscroll-behavior: none; }
+
+html, body { font-family: var(--font-body); }
+h1, h2, h3, button { font-family: var(--font-display); }
+@keyframes screen-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes panel-glow { 0%, 100% { box-shadow: 0 0 18px rgba(25,240,255,.25); } 50% { box-shadow: 0 0 30px rgba(25,240,255,.45); } }
+.screen-in { animation: screen-in 200ms ease-out both; }
+.panel-glow { animation: panel-glow 3s ease-in-out infinite; }
+[data-reduced='true'] .panel-glow { animation: none; }
+.neon-title { text-shadow: 0 0 12px var(--color-cyan-neon), 0 0 32px color-mix(in srgb, var(--color-cyan-neon) 60%, transparent); }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+/* Telas com entalhe (iPhone): mantém os controles fora das áreas cobertas. */
+.safe-pad { padding: max(1rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right)) max(1rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left)); }
